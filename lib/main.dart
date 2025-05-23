@@ -1,10 +1,7 @@
-import 'package:rainy_night/core/storage/secure_storage.dart';
-import 'package:rainy_night/features/main/presentation/business_logic/main_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rainy_night/core/config/env_config.dart';
 import 'package:rainy_night/core/config/app_theme.dart';
-import 'package:rainy_night/features/auth/business_logic/auth_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,51 +31,28 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) {
-          print("Create Auth Bloc");
-          AuthBloc bloc = AuthBloc();
-          void checkAuth() async {
-            final accessToken = await SecureStorage().readAccessToken();
-            if (accessToken != null) {
-              bloc.add(const AuthEvent.getUserInfo());
-            }
-          }
-
-          checkAuth();
-          return bloc;
-        }),
-        BlocProvider(create: (context) {
           print("Create Language Bloc");
           return LanguageBloc(prefs)..add(const LanguageEvent.loadLanguage());
         }),
-        BlocProvider(
-          create: (context) {
-            print("Create Main Bloc");
-            return MainBloc();
-          },
-        ),
       ],
-      child: BlocBuilder<AuthBloc, AuthState>(
+      child: BlocBuilder<LanguageBloc, LanguageState>(
         builder: (context, state) {
-          return BlocBuilder<LanguageBloc, LanguageState>(
-            builder: (context, state) {
-              return MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                theme: AppTheme.darkTheme,
-                color: const Color(0xFFE8DAB8),
-                routerConfig: router,
-                localizationsDelegates: const [
-                  AppLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: const [
-                  Locale('en'),
-                  Locale('vi'),
-                ],
-                locale: Locale(state.languageCode),
-              );
-            },
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.darkTheme,
+            color: const Color(0xFFE8DAB8),
+            routerConfig: router,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'),
+              Locale('vi'),
+            ],
+            locale: Locale(state.languageCode),
           );
         },
       ),

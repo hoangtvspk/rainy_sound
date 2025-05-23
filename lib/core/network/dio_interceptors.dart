@@ -1,4 +1,3 @@
-import 'package:rainy_night/features/auth/data/repositories/auth_repository.dart';
 import 'package:dio/dio.dart';
 import 'dart:async';
 import 'package:rainy_night/core/storage/secure_storage.dart';
@@ -127,13 +126,13 @@ class DioInterceptors {
       throw Exception('Login session expired');
     }
 
-    final authRepository = AuthRepository();
-    await authRepository.refreshToken();
+    // final authRepository = AuthRepository();
+    // await authRepository.refreshToken();
 
-    _accessToken = await _secureStorage.readAccessToken();
-    if (_accessToken == null) {
-      throw Exception('Login session expired');
-    }
+    // _accessToken = await _secureStorage.readAccessToken();
+    // if (_accessToken == null) {
+    //   throw Exception('Login session expired');
+    // }
   }
 
   Future<void> _handleRefreshFailure() async {
