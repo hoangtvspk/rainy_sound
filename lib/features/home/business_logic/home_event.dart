@@ -6,5 +6,5 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.started() = _Started;
 
   // New Releases
-  const factory HomeEvent.getPosts() = _GetPosts;
+  const factory HomeEvent.getRainySounds() = _GetRainySounds;
 }

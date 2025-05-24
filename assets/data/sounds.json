@@ -1,0 +1,52 @@
+{
+  "sounds": [
+    {
+      "id": 1,
+      "title": "soundGentleRain",
+      "description": "soundGentleRainDesc",
+      "audioUrl": "assets/audios/rain_chilling.mp3",
+      "imageUrl": "assets/images/rain_chill_img.png",
+      "thumbnailUrl": "assets/images/rain_chill.png"
+    },
+    {
+      "id": 2,
+      "title": "soundHeavyRain",
+      "description": "soundHeavyRainDesc",
+      "audioUrl": "assets/audios/rain_heavy.mp3",
+      "imageUrl": "assets/images/rain_heavy_img.png",
+      "thumbnailUrl": "assets/images/rain_heavy.png"
+    },
+    {
+      "id": 3,
+      "title": "soundThunderRain",
+      "description": "soundThunderRainDesc",
+      "audioUrl": "assets/audios/rain_thunder.mp3",
+      "imageUrl": "assets/images/rain_thunder_img.png",
+      "thumbnailUrl": "assets/images/rain_thunder.png"
+    },
+    {
+      "id": 4,
+      "title": "soundWindyRain",
+      "description": "soundWindyRainDesc",
+      "audioUrl": "assets/audios/rain_windy.mp3",
+      "imageUrl": "assets/images/rain_windy_img.png",
+      "thumbnailUrl": "assets/images/rain_windy.png"
+    },
+    {
+      "id": 5,
+      "title": "soundThunderstorm",
+      "description": "soundThunderstormDesc",
+      "audioUrl": "assets/audios/rain_thunder_storm.mp3",
+      "imageUrl": "assets/images/rain_storm_img.png",
+      "thumbnailUrl": "assets/images/rain_storm.png"
+    },
+    {
+      "id": 6,
+      "title": "soundRainOnRoof",
+      "description": "soundRainOnRoofDesc",
+      "audioUrl": "assets/audios/rain_on_roof.mp3",
+      "imageUrl": "assets/images/rain_roof_img.png",
+      "thumbnailUrl": "assets/images/rain_roof.png"
+    }
+  ]
+} 

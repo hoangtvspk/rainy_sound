@@ -50,13 +50,14 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
     emit(state.copyWith(isLoading: true));
     try {
       // Get saved language from preferences
-      final savedLanguage = _prefs.getString(_languageKey);
+      final savedLanguage = null;
 
       // If no saved language, use device locale
       if (savedLanguage == null) {
         final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
+        print("deviceLocale: $deviceLocale");
         final languageCode = deviceLocale.languageCode;
-
+        print("languageCode: $languageCode");
         // Save the device locale to preferences
         await _prefs.setString(_languageKey, languageCode);
         if (!emit.isDone) {

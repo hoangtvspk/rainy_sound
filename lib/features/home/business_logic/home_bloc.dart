@@ -1,6 +1,6 @@
+import 'package:rainy_night/core/models/rainy_sould/rainy_sound.dart';
 import 'package:rainy_night/core/models/status/status.dart';
 import 'package:rainy_night/core/network/api_caller.dart';
-import 'package:rainy_night/features/home/data/models/post/post.dart';
 import 'package:rainy_night/features/home/data/repositories/home_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,38 +18,45 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> with ApiCaller {
   HomeBloc() : super(HomeState.initial()) {
     repo = HomeRepository(homeService);
     on<_Started>(_onStarted);
-    on<_GetPosts>(_onGetPosts);
+    on<_GetRainySounds>(_onGetRainySounds);
   }
 
   Future<void> _onStarted(_Started event, Emitter<HomeState> emit) async {
     emit(state.copyWith(
-      statusLoadPosts: const Status.loading(),
+      statusLoadRainySounds: const Status.loading(),
     ));
-    add(const _GetPosts());
+    add(const _GetRainySounds());
   }
 
   void start() {
     add(const _Started());
   }
 
-  Future<void> _onGetPosts(_GetPosts event, Emitter<HomeState> emit) async {
-    emit(state.copyWith(statusLoadPosts: const Status.loading()));
+  Future<void> _onGetRainySounds(
+      _GetRainySounds event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(statusLoadRainySounds: const Status.loading()));
 
     await apiCallSafety(
-      () => repo.getPosts(),
+      () => repo.getRainySounds(),
       onStart: () async =>
-          emit(state.copyWith(statusLoadPosts: const Status.loading())),
-      onSuccess: (data) async => emit(state.copyWith(
-        posts: data ?? [],
-        statusLoadPosts: const Status.success(),
-      )),
-      onError: (error) async => emit(state.copyWith(
-        statusLoadPosts: Status.failure(error.toString()),
-      )),
+          emit(state.copyWith(statusLoadRainySounds: const Status.loading())),
+      onSuccess: (data) async {
+        print("data from bloc: $data");
+        emit(state.copyWith(
+          rainySounds: data ?? [],
+          statusLoadRainySounds: const Status.success(),
+        ));
+      },
+      onError: (error) async {
+        print("error from bloc: $error");
+        emit(state.copyWith(
+          statusLoadRainySounds: Status.failure(error.toString()),
+        ));
+      },
       onCompleted: () async =>
-          emit(state.copyWith(statusLoadPosts: const Status.idle())),
+          emit(state.copyWith(statusLoadRainySounds: const Status.idle())),
       onFinally: () async =>
-          emit(state.copyWith(statusLoadPosts: const Status.idle())),
+          emit(state.copyWith(statusLoadRainySounds: const Status.idle())),
     );
   }
 }

@@ -19,38 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getPosts,
+    required TResult Function() getRainySounds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getPosts,
+    TResult? Function()? getRainySounds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getPosts,
+    TResult Function()? getRainySounds,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetPosts value) getPosts,
+    required TResult Function(_GetRainySounds value) getRainySounds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetPosts value)? getPosts,
+    TResult? Function(_GetRainySounds value)? getRainySounds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetPosts value)? getPosts,
+    TResult Function(_GetRainySounds value)? getRainySounds,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,7 +118,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getPosts,
+    required TResult Function() getRainySounds,
   }) {
     return started();
   }
@@ -127,7 +127,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getPosts,
+    TResult? Function()? getRainySounds,
   }) {
     return started?.call();
   }
@@ -136,7 +136,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getPosts,
+    TResult Function()? getRainySounds,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -149,7 +149,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetPosts value) getPosts,
+    required TResult Function(_GetRainySounds value) getRainySounds,
   }) {
     return started(this);
   }
@@ -158,7 +158,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetPosts value)? getPosts,
+    TResult? Function(_GetRainySounds value)? getRainySounds,
   }) {
     return started?.call(this);
   }
@@ -167,7 +167,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetPosts value)? getPosts,
+    TResult Function(_GetRainySounds value)? getRainySounds,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,18 +182,18 @@ abstract class _Started implements HomeEvent {
 }
 
 /// @nodoc
-abstract class _$$GetPostsImplCopyWith<$Res> {
-  factory _$$GetPostsImplCopyWith(
-          _$GetPostsImpl value, $Res Function(_$GetPostsImpl) then) =
-      __$$GetPostsImplCopyWithImpl<$Res>;
+abstract class _$$GetRainySoundsImplCopyWith<$Res> {
+  factory _$$GetRainySoundsImplCopyWith(_$GetRainySoundsImpl value,
+          $Res Function(_$GetRainySoundsImpl) then) =
+      __$$GetRainySoundsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetPostsImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$GetPostsImpl>
-    implements _$$GetPostsImplCopyWith<$Res> {
-  __$$GetPostsImplCopyWithImpl(
-      _$GetPostsImpl _value, $Res Function(_$GetPostsImpl) _then)
+class __$$GetRainySoundsImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$GetRainySoundsImpl>
+    implements _$$GetRainySoundsImplCopyWith<$Res> {
+  __$$GetRainySoundsImplCopyWithImpl(
+      _$GetRainySoundsImpl _value, $Res Function(_$GetRainySoundsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HomeEvent
@@ -202,18 +202,18 @@ class __$$GetPostsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetPostsImpl implements _GetPosts {
-  const _$GetPostsImpl();
+class _$GetRainySoundsImpl implements _GetRainySounds {
+  const _$GetRainySoundsImpl();
 
   @override
   String toString() {
-    return 'HomeEvent.getPosts()';
+    return 'HomeEvent.getRainySounds()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetPostsImpl);
+        (other.runtimeType == runtimeType && other is _$GetRainySoundsImpl);
   }
 
   @override
@@ -223,29 +223,29 @@ class _$GetPostsImpl implements _GetPosts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getPosts,
+    required TResult Function() getRainySounds,
   }) {
-    return getPosts();
+    return getRainySounds();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getPosts,
+    TResult? Function()? getRainySounds,
   }) {
-    return getPosts?.call();
+    return getRainySounds?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getPosts,
+    TResult Function()? getRainySounds,
     required TResult orElse(),
   }) {
-    if (getPosts != null) {
-      return getPosts();
+    if (getRainySounds != null) {
+      return getRainySounds();
     }
     return orElse();
   }
@@ -254,42 +254,42 @@ class _$GetPostsImpl implements _GetPosts {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetPosts value) getPosts,
+    required TResult Function(_GetRainySounds value) getRainySounds,
   }) {
-    return getPosts(this);
+    return getRainySounds(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetPosts value)? getPosts,
+    TResult? Function(_GetRainySounds value)? getRainySounds,
   }) {
-    return getPosts?.call(this);
+    return getRainySounds?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetPosts value)? getPosts,
+    TResult Function(_GetRainySounds value)? getRainySounds,
     required TResult orElse(),
   }) {
-    if (getPosts != null) {
-      return getPosts(this);
+    if (getRainySounds != null) {
+      return getRainySounds(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetPosts implements HomeEvent {
-  const factory _GetPosts() = _$GetPostsImpl;
+abstract class _GetRainySounds implements HomeEvent {
+  const factory _GetRainySounds() = _$GetRainySoundsImpl;
 }
 
 /// @nodoc
 mixin _$HomeState {
-  List<Post> get posts => throw _privateConstructorUsedError;
-  Status get statusLoadPosts => throw _privateConstructorUsedError;
+  List<RainySound> get rainySounds => throw _privateConstructorUsedError;
+  Status get statusLoadRainySounds => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -303,9 +303,9 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({List<Post> posts, Status statusLoadPosts});
+  $Res call({List<RainySound> rainySounds, Status statusLoadRainySounds});
 
-  $StatusCopyWith<$Res> get statusLoadPosts;
+  $StatusCopyWith<$Res> get statusLoadRainySounds;
 }
 
 /// @nodoc
@@ -323,17 +323,17 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? posts = null,
-    Object? statusLoadPosts = null,
+    Object? rainySounds = null,
+    Object? statusLoadRainySounds = null,
   }) {
     return _then(_value.copyWith(
-      posts: null == posts
-          ? _value.posts
-          : posts // ignore: cast_nullable_to_non_nullable
-              as List<Post>,
-      statusLoadPosts: null == statusLoadPosts
-          ? _value.statusLoadPosts
-          : statusLoadPosts // ignore: cast_nullable_to_non_nullable
+      rainySounds: null == rainySounds
+          ? _value.rainySounds
+          : rainySounds // ignore: cast_nullable_to_non_nullable
+              as List<RainySound>,
+      statusLoadRainySounds: null == statusLoadRainySounds
+          ? _value.statusLoadRainySounds
+          : statusLoadRainySounds // ignore: cast_nullable_to_non_nullable
               as Status,
     ) as $Val);
   }
@@ -342,9 +342,9 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $StatusCopyWith<$Res> get statusLoadPosts {
-    return $StatusCopyWith<$Res>(_value.statusLoadPosts, (value) {
-      return _then(_value.copyWith(statusLoadPosts: value) as $Val);
+  $StatusCopyWith<$Res> get statusLoadRainySounds {
+    return $StatusCopyWith<$Res>(_value.statusLoadRainySounds, (value) {
+      return _then(_value.copyWith(statusLoadRainySounds: value) as $Val);
     });
   }
 }
@@ -357,10 +357,10 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Post> posts, Status statusLoadPosts});
+  $Res call({List<RainySound> rainySounds, Status statusLoadRainySounds});
 
   @override
-  $StatusCopyWith<$Res> get statusLoadPosts;
+  $StatusCopyWith<$Res> get statusLoadRainySounds;
 }
 
 /// @nodoc
@@ -376,17 +376,17 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? posts = null,
-    Object? statusLoadPosts = null,
+    Object? rainySounds = null,
+    Object? statusLoadRainySounds = null,
   }) {
     return _then(_$HomeStateImpl(
-      posts: null == posts
-          ? _value._posts
-          : posts // ignore: cast_nullable_to_non_nullable
-              as List<Post>,
-      statusLoadPosts: null == statusLoadPosts
-          ? _value.statusLoadPosts
-          : statusLoadPosts // ignore: cast_nullable_to_non_nullable
+      rainySounds: null == rainySounds
+          ? _value._rainySounds
+          : rainySounds // ignore: cast_nullable_to_non_nullable
+              as List<RainySound>,
+      statusLoadRainySounds: null == statusLoadRainySounds
+          ? _value.statusLoadRainySounds
+          : statusLoadRainySounds // ignore: cast_nullable_to_non_nullable
               as Status,
     ));
   }
@@ -396,26 +396,26 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 
 class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
-      {final List<Post> posts = const [],
-      this.statusLoadPosts = const Status.idle()})
-      : _posts = posts;
+      {final List<RainySound> rainySounds = const [],
+      this.statusLoadRainySounds = const Status.idle()})
+      : _rainySounds = rainySounds;
 
-  final List<Post> _posts;
+  final List<RainySound> _rainySounds;
   @override
   @JsonKey()
-  List<Post> get posts {
-    if (_posts is EqualUnmodifiableListView) return _posts;
+  List<RainySound> get rainySounds {
+    if (_rainySounds is EqualUnmodifiableListView) return _rainySounds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_posts);
+    return EqualUnmodifiableListView(_rainySounds);
   }
 
   @override
   @JsonKey()
-  final Status statusLoadPosts;
+  final Status statusLoadRainySounds;
 
   @override
   String toString() {
-    return 'HomeState(posts: $posts, statusLoadPosts: $statusLoadPosts)';
+    return 'HomeState(rainySounds: $rainySounds, statusLoadRainySounds: $statusLoadRainySounds)';
   }
 
   @override
@@ -423,14 +423,15 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
-            const DeepCollectionEquality().equals(other._posts, _posts) &&
-            (identical(other.statusLoadPosts, statusLoadPosts) ||
-                other.statusLoadPosts == statusLoadPosts));
+            const DeepCollectionEquality()
+                .equals(other._rainySounds, _rainySounds) &&
+            (identical(other.statusLoadRainySounds, statusLoadRainySounds) ||
+                other.statusLoadRainySounds == statusLoadRainySounds));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_posts), statusLoadPosts);
+      const DeepCollectionEquality().hash(_rainySounds), statusLoadRainySounds);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -443,12 +444,13 @@ class _$HomeStateImpl implements _HomeState {
 
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
-      {final List<Post> posts, final Status statusLoadPosts}) = _$HomeStateImpl;
+      {final List<RainySound> rainySounds,
+      final Status statusLoadRainySounds}) = _$HomeStateImpl;
 
   @override
-  List<Post> get posts;
+  List<RainySound> get rainySounds;
   @override
-  Status get statusLoadPosts;
+  Status get statusLoadRainySounds;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

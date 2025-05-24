@@ -1,5 +1,5 @@
 import 'package:rainy_night/core/models/base_response/base_response.dart';
-import '../models/post/post.dart';
+import 'package:rainy_night/core/models/rainy_sould/rainy_sound.dart';
 import '../services/home_service.dart';
 
 class HomeRepository {
@@ -7,16 +7,15 @@ class HomeRepository {
 
   HomeRepository(this.homeService);
 
-  Future<BaseResponse<List<Post>>> getPosts() async {
+  Future<BaseResponse<List<RainySound>>> getRainySounds() async {
     try {
-      final res = await homeService.getPosts();
-      if (res == null) {
-        throw Exception("Get posts failed");
-      } else {
-        List<Post> result = res.map((e) => Post.fromJson(e)).toList();
-        return BaseResponse(data: result);
-      }
+      final res = await homeService.getSounds();
+      final List<dynamic> soundsJson = res['sounds'] as List<dynamic>;
+      List<RainySound> result =
+          soundsJson.map((e) => RainySound.fromJson(e)).toList();
+      return BaseResponse(data: result, success: true);
     } catch (e) {
+      print("error from repository: $e");
       return const BaseResponse(data: []);
     }
   }

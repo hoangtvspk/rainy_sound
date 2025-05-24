@@ -7,12 +7,21 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/l10n/app_localizations.dart';
 import 'core/provider/language/language_bloc.dart';
+import 'features/player/business_logic/player_bloc.dart';
+import 'features/player/data/repositories/player_audio_repository.dart';
+import 'features/player/data/services/player_audio_service.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 
 import 'core/router/app_router.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await JustAudioBackground.init(
+    androidNotificationChannelId: 'com.rainy.chillin.audio',
+    androidNotificationChannelName: 'Audio playback',
+    androidNotificationOngoing: true,
+  );
   const environment =
       String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev');
   await EnvConfig.initialize(environment);
@@ -31,8 +40,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) {
-          print("Create Language Bloc");
           return LanguageBloc(prefs)..add(const LanguageEvent.loadLanguage());
+        }),
+        BlocProvider(create: (context) {
+          return PlayerBloc(
+            PlayerAudioRepository(),
+            PlayerAudioService(),
+          );
         }),
       ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
@@ -49,8 +63,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: const [
-              Locale('en'),
               Locale('vi'),
+              Locale('en'),
             ],
             locale: Locale(state.languageCode),
           );
