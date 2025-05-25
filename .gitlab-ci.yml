@@ -26,8 +26,16 @@ cache:
     - when: on_success
 
 before_script:
-  - *setup_environment
-  - *setup_google_play_service_account
+  - |
+    if [[ "$CI_COMMIT_BRANCH" == "dev" ]]; then
+      echo "$ENV_DEV_CONTENT" > lib/core/config/.env.dev
+    elif [[ "$CI_COMMIT_BRANCH" == "staging" ]]; then
+      echo "$ENV_STAGING_CONTENT" > lib/core/config/.env.staging
+    elif [[ "$CI_COMMIT_BRANCH" == "main" ]]; then
+      echo "$ENV_PROD_CONTENT" > lib/core/config/.env.prod
+    fi
+  - |
+    echo "$JSON_KEY_FILE_CONTENT" > android/google-play-service-account.json
   - flutter channel $FLUTTER_CHANNEL
   - flutter upgrade
   - flutter pub get
