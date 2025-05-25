@@ -83,7 +83,6 @@ before_script:
   - *setup_environment
   - *setup_google_play_service_account
   - flutter channel $FLUTTER_CHANNEL
-  - flutter upgrade
   - flutter pub get
 
 # ANALYZE và TEST chạy bình thường trên branch

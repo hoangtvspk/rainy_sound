@@ -6,6 +6,7 @@
 .DS_Store
 .atom/
 .build/
+.builds/
 .buildlog/
 .history
 .svn/
@@ -32,6 +33,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+/builds/
 
 # Symbolication related
 app.*.symbols
