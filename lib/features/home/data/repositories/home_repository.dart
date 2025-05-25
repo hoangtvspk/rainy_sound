@@ -15,7 +15,6 @@ class HomeRepository {
           soundsJson.map((e) => RainySound.fromJson(e)).toList();
       return BaseResponse(data: result, success: true);
     } catch (e) {
-      print("error from repository: $e");
       return const BaseResponse(data: []);
     }
   }

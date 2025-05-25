@@ -11,7 +11,7 @@ class PlayerDescription extends StatelessWidget {
       context.getLocalizedText(sound.description),
       style: TextStyle(
         fontSize: 15,
-        color: Colors.white.withOpacity(0.7),
+        color: Colors.white.withValues(alpha: 0.7),
         height: 1.4,
       ),
       textAlign: TextAlign.center,

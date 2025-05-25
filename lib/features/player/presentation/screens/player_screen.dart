@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rainy_night/core/config/app_color.dart';
 import 'package:rainy_night/core/l10n/app_localizations.dart';
-import 'package:rainy_night/core/models/rainy_sould/rainy_sound.dart';
 import '../../business_logic/player_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rainy_night/features/player/presentation/components/player_image.dart';

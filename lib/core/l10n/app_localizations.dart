@@ -7,7 +7,6 @@ extension AppLocalizationsX on BuildContext {
   AppLocalizations get l10n => AppLocalizations.of(this)!;
 
   String getLocalizedText(String key) {
-    print('key: $key');
     switch (key) {
       // Sound titles
       case 'soundGentleRain':

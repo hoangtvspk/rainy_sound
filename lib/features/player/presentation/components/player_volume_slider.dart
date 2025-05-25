@@ -17,7 +17,7 @@ class PlayerVolumeSlider extends StatelessWidget {
       children: [
         Icon(
           volume == 0 ? CupertinoIcons.volume_off : CupertinoIcons.volume_up,
-          color: Colors.white.withOpacity(0.7),
+          color: Colors.white.withValues(alpha: 0.7),
           size: 24,
         ),
         Expanded(
@@ -27,9 +27,9 @@ class PlayerVolumeSlider extends StatelessWidget {
               thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
               overlayShape: const RoundSliderOverlayShape(overlayRadius: 18),
               activeTrackColor: Colors.white,
-              inactiveTrackColor: Colors.white.withOpacity(0.2),
+              inactiveTrackColor: Colors.white.withValues(alpha: 0.2),
               thumbColor: Colors.white,
-              overlayColor: Colors.white.withOpacity(0.2),
+              overlayColor: Colors.white.withValues(alpha: 0.2),
             ),
             child: Slider(
               value: volume,

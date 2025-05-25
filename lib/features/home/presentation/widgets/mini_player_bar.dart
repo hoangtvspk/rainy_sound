@@ -10,15 +10,15 @@ class MiniPlayerBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppPreferences _appPreferences = AppPreferences();
+    final AppPreferences appPreferences = AppPreferences();
     return BlocBuilder<PlayerBloc, PlayerState>(
       buildWhen: (prev, curr) => prev.playingSound != curr.playingSound,
       builder: (context, state) {
-        final sound = state.playingSound ?? _appPreferences.getPlayingSound();
+        final sound = state.playingSound ?? appPreferences.getPlayingSound();
         if (sound == null) return const SizedBox.shrink();
 
         return Material(
-          color: Colors.black.withOpacity(0.85),
+          color: Colors.black.withValues(alpha: 0.85),
           child: InkWell(
             onTap: () {
               context.push('/player/${sound.id}');

@@ -7,7 +7,6 @@ import 'package:rainy_night/features/player/presentation/screens/player_image_fu
 import 'package:rainy_night/core/models/rainy_sould/rainy_sound.dart';
 
 import '../network/dio_client.dart';
-import '../storage/secure_storage.dart';
 
 GoRouter router = GoRouter(
   navigatorKey: navigatorKey,

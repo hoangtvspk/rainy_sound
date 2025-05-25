@@ -103,7 +103,7 @@ class _PlayerImageFullscreenState extends State<PlayerImageFullscreen> {
                   right: 0,
                   bottom: 0,
                   child: Container(
-                    color: Colors.black.withOpacity(0.4),
+                    color: Colors.black.withValues(alpha: 0.4),
                     padding: const EdgeInsets.symmetric(
                         vertical: 16, horizontal: 24),
                     child: Row(

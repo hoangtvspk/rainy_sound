@@ -12,13 +12,13 @@ class PlayerTimerBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.08),
+        color: Colors.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(16),
       ),
       child: GestureDetector(
         onTap: () async {
           final duration = await showTimerSheet(context);
-          if (duration != null) {
+          if (duration != null && context.mounted) {
             context.read<PlayerBloc>().add(PlayerEvent.setTimer(duration));
           }
         },
@@ -29,18 +29,18 @@ class PlayerTimerBar extends StatelessWidget {
             children: [
               if (state.isTimerActive) ...[
                 Icon(CupertinoIcons.timer,
-                    color: Colors.white.withOpacity(0.7), size: 20),
+                    color: Colors.white.withValues(alpha: 0.7), size: 20),
                 const SizedBox(width: 8),
                 Text(
                   formatDuration(state.timer),
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.7),
+                    color: Colors.white.withValues(alpha: 0.7),
                     fontSize: 15,
                   ),
                 ),
               ] else ...[
                 Icon(CupertinoIcons.timer,
-                    color: Colors.white.withOpacity(0.3), size: 20),
+                    color: Colors.white.withValues(alpha: 0.3), size: 20),
               ],
             ],
           ),

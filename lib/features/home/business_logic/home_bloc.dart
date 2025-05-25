@@ -41,14 +41,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> with ApiCaller {
       onStart: () async =>
           emit(state.copyWith(statusLoadRainySounds: const Status.loading())),
       onSuccess: (data) async {
-        print("data from bloc: $data");
         emit(state.copyWith(
           rainySounds: data ?? [],
           statusLoadRainySounds: const Status.success(),
         ));
       },
       onError: (error) async {
-        print("error from bloc: $error");
         emit(state.copyWith(
           statusLoadRainySounds: Status.failure(error.toString()),
         ));
