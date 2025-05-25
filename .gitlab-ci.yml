@@ -132,8 +132,7 @@ deploy-prod:
 
 # SETUP ENVIRONMENT
 .setup_environment: &setup_environment
-  script:
-    - |
+   - |
       if [[ "$CI_COMMIT_BRANCH" == "dev" ]]; then
         echo "$ENV_DEV_CONTENT" > lib/core/config/.env.dev
       elif [[ "$CI_COMMIT_BRANCH" == "staging" ]]; then
@@ -141,12 +140,12 @@ deploy-prod:
       elif [[ "$CI_COMMIT_BRANCH" == "main" ]]; then
         echo "$ENV_PROD_CONTENT" > lib/core/config/.env.prod
       fi
+   
 
 
 # SETUP GOOGLE PLAY SERVICE ACCOUNT
 .setup_google_play_service_account: &setup_google_play_service_account
-  script:
-    - |
+  - |
       echo "$JSON_KEY_FILE_CONTENT" > android/google-play-service-account.json
 
 
@@ -161,8 +160,7 @@ deploy-prod:
 
 # CHECK PLATFORM TO BUILD
 .check_platform_to_build: &check_platform_to_build
-  script:
-    - |
+  - |
       if [[ "$CI_COMMIT_TAG" =~ "android" ]]; then
         make build-app-bundle-${ENVIRONMENT}
       fi
@@ -173,13 +171,13 @@ deploy-prod:
         make build-app-bundle-${ENVIRONMENT}
         make build-ios-${ENVIRONMENT}
       fi
+    
 
 
 
 # CHECK PLATFORM TO DEPLOY
 .check_platform_to_deploy: &check_platform_to_deploy
-  script:
-    - |
+  - |
       if [[ "$CI_COMMIT_TAG" =~ "android" ]]; then
         cd android
         bundle exec fastlane android deploy environment:${ENVIRONMENT} ${FIREBASE_APP_ID_PARAM}
@@ -195,3 +193,4 @@ deploy-prod:
         cd ios
         bundle exec fastlane ios deploy environment:${ENVIRONMENT} ${FIREBASE_APP_ID_PARAM}
       fi
+    
