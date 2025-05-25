@@ -89,17 +89,23 @@ before_script:
 # ANALYZE và TEST chạy bình thường trên branch
 analyze:
   stage: analyze
+  tags:
+    - macos
   script:
     - make analyze
 
 test:
   stage: test
+  tags:
+    - macos
   script:
     - make test
 
 # BUILD & DEPLOY DEV
 build-dev:
   stage: build
+  tags:
+    - macos
   variables:
     ENVIRONMENT: "dev"
   <<: *retry_config
@@ -114,6 +120,8 @@ build-dev:
 
 deploy-dev:
   stage: deploy
+  tags:
+    - macos
   variables:
     ENVIRONMENT: "dev"
     FIREBASE_APP_ID_PARAM: "firebase_app_id=$FIREBASE_APP_ID"
@@ -128,6 +136,8 @@ deploy-dev:
 # BUILD & DEPLOY STAGING
 build-staging:
   stage: build
+  tags:
+    - macos
   variables:
     ENVIRONMENT: "staging"
   <<: *retry_config
@@ -142,6 +152,8 @@ build-staging:
 
 deploy-staging:
   stage: deploy
+  tags:
+    - macos
   variables:
     ENVIRONMENT: "staging"
     FIREBASE_APP_ID_PARAM: "firebase_app_id=$FIREBASE_APP_ID"
@@ -156,6 +168,8 @@ deploy-staging:
 # BUILD & DEPLOY PROD
 build-prod:
   stage: build
+  tags:
+    - macos
   variables:
     ENVIRONMENT: "prod"
   <<: *retry_config
@@ -170,6 +184,8 @@ build-prod:
 
 deploy-prod:
   stage: deploy
+  tags:
+    - macos
   variables:
     ENVIRONMENT: "prod"
     FIREBASE_APP_ID_PARAM: ""
