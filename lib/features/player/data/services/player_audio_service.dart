@@ -43,19 +43,24 @@ class PlayerAudioService {
     }
 
     if (url.startsWith('assets/')) {
-      await _player.setAudioSource(
-        AudioSource.asset(
-          url,
-          tag: sound != null
-              ? MediaItem(
-                  id: sound.id.toString(),
-                  album: 'Rainy Night',
-                  title: sound.title,
-                  artUri: artUri,
-                )
-              : null,
-        ),
+      await _player.setAudioSources(
+        List.filled(
+            100,
+            AudioSource.asset(
+              url,
+              tag: sound != null
+                  ? MediaItem(
+                      id: sound.id.toString(),
+                      album: 'Rainy Night',
+                      title: sound.title,
+                      artUri: artUri,
+                    )
+                  : null,
+            )),
+        initialIndex: 0,
+        initialPosition: Duration.zero,
       );
+      await _player.setLoopMode(LoopMode.all);
     } else {
       await _player.setAudioSource(
         AudioSource.uri(
@@ -70,8 +75,8 @@ class PlayerAudioService {
               : null,
         ),
       );
+      await _player.setLoopMode(LoopMode.one);
     }
-    await _player.setLoopMode(LoopMode.one);
   }
 
   Future<void> play() => _player.play();
