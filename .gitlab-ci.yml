@@ -62,7 +62,7 @@ deploy-dev:
   stage: deploy
   variables:
     ENVIRONMENT: "dev"
-    FIREBASE_APP_ID_PARAM: "firebase_app_id=$FIREBASE_IOS_APP_ID"
+    FIREBASE_APP_ID_PARAM: "firebase_app_id=$FIREBASE_APP_ID"
   needs:
     - build-dev
   <<: *retry_config
@@ -90,7 +90,7 @@ deploy-staging:
   stage: deploy
   variables:
     ENVIRONMENT: "staging"
-    FIREBASE_APP_ID_PARAM: "firebase_app_id=$FIREBASE_IOS_APP_ID"
+    FIREBASE_APP_ID_PARAM: "firebase_app_id=$FIREBASE_APP_ID"
   <<: *retry_config
   needs:
     - build-staging
