@@ -35,7 +35,7 @@ platform :android do
         gradle(task: gradle_task)
     rescue => e
         UI.error("❌ Failed to build Android app: #{e.message}")
-        return
+        next
     end
 
     apk_path = env == "prod" ? "../app/build/outputs/apk/release/app-release.apk" : "../app/build/outputs/apk/debug/app-debug.apk"
