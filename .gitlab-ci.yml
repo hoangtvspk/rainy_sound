@@ -124,7 +124,7 @@ deploy-dev:
     - build-dev
   <<: *retry_config
   rules:
-    - if: $CI_COMMIT_TAG != null && $CI_COMMIT_TAG != ""'
+    - if: '$CI_COMMIT_TAG != null && $CI_COMMIT_TAG != ""'
   script:
     - *check_platform_to_deploy
 
