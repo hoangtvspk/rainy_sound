@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461396451881",
+    "project_id": "rainy-night-a9cee",
+    "storage_bucket": "rainy-night-a9cee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461396451881:android:af69869cecb4d09db0b238",
+        "android_client_info": {
+          "package_name": "bui.dev.rainynight"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9DaXDDWk2BA5y0n5-zSCgQHlfjNNwjqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

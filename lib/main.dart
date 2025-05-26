@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rainy_night/core/config/env_config.dart';
 import 'package:rainy_night/core/config/app_theme.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:rainy_night/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/l10n/app_localizations.dart';
 import 'core/provider/language/language_bloc.dart';
@@ -26,7 +28,9 @@ void main() async {
       String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev');
   await EnvConfig.initialize(environment);
   final prefs = await SharedPreferences.getInstance();
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp(prefs: prefs));
 }
 
