@@ -81,19 +81,19 @@ platform :android do
     gradle_path = "../app/build.gradle"
     unless File.exist?(gradle_path)
       UI.error("❌ build.gradle not found")
-      return nil
+      next nil
     end
   
     gradle_content = File.read(gradle_path)
-    version_match = gradle_content.match(/versionName\s*[=]?\s*"([^"]+)"/)
+    version_match = gradle_content.match(/versionName\s*[=]?\s*["']([^"']+)["']/)
     
     if version_match
       version = version_match[1]
       UI.message("📱 Android Version from build.gradle: #{version}")
-      return version
+      next version
     else
       UI.error("❌ Could not find versionName in build.gradle")
-      return nil
+      next nil
     end
   end
 
@@ -102,7 +102,7 @@ platform :android do
     gradle_path = "../app/build.gradle"
     unless File.exist?(gradle_path)
       UI.error("❌ build.gradle not found")
-      return 1
+      next 1
     end
   
     gradle_content = File.read(gradle_path)
@@ -112,10 +112,10 @@ platform :android do
       current_build = build_match[1].to_i
       new_build = current_build + 1
       UI.message("📱 Android Build number: #{new_build}")
-      return new_build
+      next new_build
     else
       UI.error("❌ Could not find versionCode in build.gradle")
-      return 1
+      next 1
     end
   end
 end
