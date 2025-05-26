@@ -85,7 +85,7 @@ platform :android do
     end
   
     gradle_content = File.read(gradle_path)
-    version_match = gradle_content.match(/versionName\s+"([^"]+)"/)
+    version_match = gradle_content.match(/versionName\s*[=]?\s*"([^"]+)"/)
     
     if version_match
       version = version_match[1]
