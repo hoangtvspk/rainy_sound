@@ -89,7 +89,7 @@ platform :android do
     end
 
     # 📤 Google Play Upload
-    json_key_file = "google-play-service-account.json"
+    json_key_file = File.expand_path("../../google-play-service-account.json", __dir__)
 
     begin
       track = env == "prod" ? "production" : "internal"
