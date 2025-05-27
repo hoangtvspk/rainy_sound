@@ -19,11 +19,11 @@ stages:
   - |
     cp "$GOOGLE_PLAY_JSON" google-play-service-account.json
     cat google-play-service-account.json
-    echo "$KEYSTORE_BASE64" | base64 -d > android/app/my-release-key.jks
+    echo "$KEYSTORE_BASE64" | base64 -d > android/app/app-release-key.jks
     echo "storePassword=$KEYSTORE_PASSWORD" > android/key.properties
     echo "keyPassword=$KEY_PASSWORD" >> android/key.properties
     echo "keyAlias=$KEY_ALIAS" >> android/key.properties
-    echo "storeFile=app/my-release-key.jks" >> android/key.properties
+    echo "storeFile=app/app-release-key.jks" >> android/key.properties
 
 # RETRY CONFIG
 .retry_config: &retry_config
