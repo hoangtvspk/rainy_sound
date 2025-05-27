@@ -76,7 +76,8 @@ platform :android do
       begin
         firebase_app_distribution(
           app: firebase_app_id,
-          aab_path: aab_path,
+          android_artifact_path: aab_path,
+          android_artifact_type: "AAB",
           groups: "beta-testers",
           release_notes: "Deploying #{env} build - #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
         )
