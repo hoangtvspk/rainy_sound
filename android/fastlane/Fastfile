@@ -48,6 +48,13 @@ platform :android do
     path = File.expand_path("../../build", __dir__)
     UI.message "📂 Absolute path to ../../build: #{path}"
 
+    if File.directory?(path)
+      UI.message "📁 Contents of #{path}:"
+      Dir.entries(path).each { |entry| UI.message "  - #{entry}" }
+    else
+      UI.error "❌ Folder not found: #{path}"
+    end
+
     aab_path = "../../build/app/outputs/bundle/devRelease/app-dev-release.aab"
 
     if firebase_app_id && File.exist?(aab_path)

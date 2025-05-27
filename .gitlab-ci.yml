@@ -113,7 +113,7 @@ build-dev:
 
   artifacts:
     paths:
-      - build/app/outputs/bundle/release/*.aab
+      - build/app/outputs/bundle/devRelease/*.aab
       - build/ios/ipa/*.ipa
 
 deploy-dev:
