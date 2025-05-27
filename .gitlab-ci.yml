@@ -17,7 +17,7 @@ stages:
 # SETUP GOOGLE PLAY SERVICE ACCOUNT
 .setup_google_play_service_account: &setup_google_play_service_account
   - |
-    echo "$JSON_KEY_FILE_CONTENT" > android/google-play-service-account.json
+    echo "$JSON_KEY_FILE_CONTENT" > google-play-service-account.json
 
 # RETRY CONFIG
 .retry_config: &retry_config
