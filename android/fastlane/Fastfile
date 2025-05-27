@@ -59,11 +59,11 @@ platform :android do
     pathRelease = File.expand_path("../../build/app/outputs/bundle/devRelease", __dir__)
     UI.message "📂 ../../build/app/outputs/bundle/devRelease: #{pathRelease}"
 
-    if File.directory?(path)
-      UI.message "📁 Contents of #{path}:"
-      Dir.entries(path).each { |entry| UI.message "  - #{entry}" }
+    if File.directory?(pathRelease)
+      UI.message "📁 Contents of #{pathRelease}:"
+      Dir.entries(pathRelease).each { |entry| UI.message "  - #{entry}" }
     else
-      UI.error "❌ Folder not found: #{path}"
+      UI.error "❌ Folder not found: #{pathRelease}"
     end
 
     
