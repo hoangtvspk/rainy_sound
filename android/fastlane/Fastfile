@@ -5,7 +5,7 @@ platform :android do
   lane :deploy do |options|
     env = options[:environment] || "dev"
     gradle_task = env == "prod" ? "assembleRelease" : "assembleDebug"
-    firebase_app_id = 1:461396451881:android:af69869cecb4d09db0b238
+    firebase_app_id = "1:461396451881:android:af69869cecb4d09db0b238"
 
     UI.message("🚀 Deploying Android app for environment: #{env}")
 
