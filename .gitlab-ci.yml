@@ -16,15 +16,8 @@ stages:
 
 # SETUP GOOGLE PLAY SERVICE ACCOUNT
 .setup_google_play_service_account: &setup_google_play_service_account
-  - echo "$GOOGLE_PLAY_JSON" > google-play-service-account.json
-  - chmod 600 google-play-service-account.json
-  - echo "Checking JSON file content:"
+  - cp "$GOOGLE_PLAY_JSON" google-play-service-account.json
   - cat google-play-service-account.json
-  - echo "Validating JSON format:"
-  - cat google-play-service-account.json | jq .
-  - echo "Checking file location:"
-  - pwd
-  - ls -la google-play-service-account.json
 
 # RETRY CONFIG
 .retry_config: &retry_config
