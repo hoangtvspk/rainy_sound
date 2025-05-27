@@ -38,6 +38,16 @@ platform :android do
         next
     end
 
+    relative = "../../"
+    absolute = File.expand_path(relative, __dir__)
+
+    UI.message "📍 __dir__ = #{__dir__}"
+    UI.message "📍 Dir.pwd = #{Dir.pwd}"
+    UI.message "📍 '../../' resolved = #{absolute}"
+
+    path = File.expand_path("../../build", __dir__)
+    UI.message "📂 Absolute path to ../../build: #{path}"
+
     aab_path = "../../build/app/outputs/bundle/devRelease/app-dev-release.aab"
 
     if firebase_app_id && File.exist?(aab_path)
