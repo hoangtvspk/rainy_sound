@@ -94,6 +94,13 @@ platform :android do
 
     begin
       track = env == "prod" ? "production" : "internal"
+      UI.message("Debug info:")
+      UI.message("Current directory: #{Dir.pwd}")
+      UI.message("JSON file path: #{json_key_file}")
+      UI.message("JSON file exists? #{File.exist?(json_key_file)}")
+      UI.message("JSON file content:")
+      UI.message(File.read(json_key_file))
+      
       supply(
         track: track,
         aab: aab_path,
@@ -102,6 +109,7 @@ platform :android do
       UI.success("✅ Uploaded to Play Store #{track} track successfully")
     rescue => e
       UI.error("❌ Failed to upload to Play Store: #{e.message}")
+      UI.error("Full error: #{e.backtrace.join("\n")}")
     end
 
     UI.success("🎉 Android deploy lane completed")

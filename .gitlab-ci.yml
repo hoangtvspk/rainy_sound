@@ -18,7 +18,13 @@ stages:
 .setup_google_play_service_account: &setup_google_play_service_account
   - echo "$GOOGLE_PLAY_JSON" > google-play-service-account.json
   - chmod 600 google-play-service-account.json
+  - echo "Checking JSON file content:"
   - cat google-play-service-account.json
+  - echo "Validating JSON format:"
+  - cat google-play-service-account.json | jq .
+  - echo "Checking file location:"
+  - pwd
+  - ls -la google-play-service-account.json
 
 # RETRY CONFIG
 .retry_config: &retry_config
@@ -64,6 +70,9 @@ stages:
 variables:
   FLUTTER_CHANNEL: "stable"
   CACHE_KEY: ${CI_COMMIT_REF_SLUG}
+  FASTLANE_HIDE_TIMESTAMP: "true"
+  FASTLANE_SKIP_UPDATE_CHECK: "true"
+  FASTLANE_DEBUG: "true"
 
 cache:
   key: ${CACHE_KEY}
