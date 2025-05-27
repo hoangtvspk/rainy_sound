@@ -68,42 +68,42 @@ platform :android do
 
     
 
-    aab_path = "../../build/app/outputs/bundle/devRelease/app-dev-release.aab"
+    aab_path = File.expand_path("../../build/app/outputs/bundle/devRelease/app-dev-release.aab", __dir__)
+    UI.message("📦 Using AAB path: #{aab_path}")
 
+    # 🚀 Firebase App Distribution
     if firebase_app_id && File.exist?(aab_path)
-        begin
-            firebase_app_distribution(
-              app: firebase_app_id,
-              aab_path: aab_path,
-              groups: "beta-testers",
-              release_notes: "Deploying #{env} build - #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
-            )
-            UI.success("Uploaded to Firebase App Distribution successfully ✅")
-        rescue => e
-            UI.error("❌ Failed to upload to Firebase: #{e.message}")
-        end
+      begin
+        firebase_app_distribution(
+          app: firebase_app_id,
+          aab_path: aab_path,
+          groups: "beta-testers",
+          release_notes: "Deploying #{env} build - #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
+        )
+        UI.success("✅ Uploaded to Firebase App Distribution successfully")
+      rescue => e
+        UI.error("❌ Failed to upload to Firebase: #{e.message}")
+      end
     else
-        UI.error("Firebase App ID not set or AAB not found, skipping Firebase upload.")
+      UI.error("⚠️ Firebase App ID not set or AAB not found, skipping Firebase upload.")
     end
 
+    # 📤 Google Play Upload
     json_key_file = "google-play-service-account.json"
-    if env == "prod"
-        begin
-            supply(track: "production", aab: aab_path, json_key: json_key_file)
-            UI.success("Uploaded to Play Store production track ✅")
-        rescue => e
-            UI.error("❌ Failed to upload to Play Store: #{e.message}")
-        end
-    else
-        begin
-            supply(track: "internal", aab: aab_path, json_key: json_key_file)
-            UI.success("Uploaded to Play Store internal track ✅")
-        rescue => e
-            UI.error("❌ Failed to upload to Play Store: #{e.message}")
-        end
+
+    begin
+      track = env == "prod" ? "production" : "internal"
+      supply(
+        track: track,
+        aab: aab_path,
+        json_key: json_key_file
+      )
+      UI.success("✅ Uploaded to Play Store #{track} track successfully")
+    rescue => e
+      UI.error("❌ Failed to upload to Play Store: #{e.message}")
     end
 
-    UI.success("Android deploy lane completed 🎉")
+    UI.success("🎉 Android deploy lane completed")
   end
 
   private_lane :get_android_version_number do 
