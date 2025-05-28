@@ -12,6 +12,7 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+/android/vendor/bundle
 
 # IntelliJ related
 *.iml
@@ -49,3 +50,4 @@ app.*.map.json
 # Environment files
 lib/core/config/.env.*
 !lib/core/config/.env.example
+/android/vendor/bundle

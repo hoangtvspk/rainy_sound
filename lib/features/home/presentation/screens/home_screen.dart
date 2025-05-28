@@ -237,13 +237,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                       shrinkWrap: true,
                                       physics:
                                           const NeverScrollableScrollPhysics(),
-                                      itemCount: sounds.length +
-                                          (hasMiniPlayer ? 1 : 0),
+                                      itemCount: sounds.length + 1,
                                       itemBuilder: (context, index) {
                                         if (index == sounds.length &&
                                             hasMiniPlayer) {
                                           // Add space for MiniPlayerBar
-                                          return const SizedBox(height: 72);
+                                          return const SizedBox(height: 100);
+                                        } else if (index == sounds.length) {
+                                          return const SizedBox(height: 30);
                                         }
                                         final sound = sounds[index];
                                         return RainySoundItem(

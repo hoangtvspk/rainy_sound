@@ -1,20 +1,21 @@
 {
   "sounds": [
+    
     {
       "id": 1,
-      "title": "soundGentleRain",
-      "description": "soundGentleRainDesc",
-      "audioUrl": "assets/audios/rain_chilling.mp3",
-      "imageUrl": "assets/images/rain_chill_img.png",
-      "thumbnailUrl": "assets/images/rain_chill.png"
-    },
-    {
-      "id": 2,
       "title": "soundHeavyRain",
       "description": "soundHeavyRainDesc",
       "audioUrl": "assets/audios/rain_heavy.mp3",
       "imageUrl": "assets/images/rain_heavy_img.png",
       "thumbnailUrl": "assets/images/rain_heavy.png"
+    },
+    {
+      "id": 2,
+      "title": "soundGentleRain",
+      "description": "soundGentleRainDesc",
+      "audioUrl": "assets/audios/rain_chilling.mp3",
+      "imageUrl": "assets/images/rain_chill_img.png",
+      "thumbnailUrl": "assets/images/rain_chill.png"
     },
     {
       "id": 3,
