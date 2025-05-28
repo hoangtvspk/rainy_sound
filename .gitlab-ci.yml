@@ -121,6 +121,7 @@ build-dev:
     - *check_platform_to_build
     - echo "📂 Kiểm tra thư mục build sau khi build:"
     - ls -R build/app/outputs/bundle
+    - ls -R build/app/outputs/flutter-apk
 
   artifacts:
     paths:
