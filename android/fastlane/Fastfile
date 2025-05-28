@@ -69,7 +69,7 @@ platform :android do
     
 
     aab_path = File.expand_path("../../build/app/outputs/bundle/#{env}Release/app-#{env}-release.aab", __dir__)
-    apk_path = File.expand_path("../../build/app/outputs/apk/#{env}/release/app-#{env}-release.apk", __dir__)
+    apk_path = File.expand_path("../../build/app/outputs/flutter-apk/app-#{env}-release.apk", __dir__)
     UI.message("📦 Using AAB path: #{aab_path}")
     UI.message("📦 Using APK path: #{apk_path}")
 
