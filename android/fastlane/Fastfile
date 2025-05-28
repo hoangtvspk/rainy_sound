@@ -71,7 +71,6 @@ platform :android do
     aab_path = File.expand_path("../../build/app/outputs/bundle/devRelease/app-dev-release.aab", __dir__)
     UI.message("📦 Using AAB path: #{aab_path}")
 
-    🚀 Firebase App Distribution
     if firebase_app_id && File.exist?(aab_path)
       begin
         firebase_app_distribution(
