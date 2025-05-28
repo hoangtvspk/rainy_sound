@@ -71,23 +71,23 @@ platform :android do
     aab_path = File.expand_path("../../build/app/outputs/bundle/devRelease/app-dev-release.aab", __dir__)
     UI.message("📦 Using AAB path: #{aab_path}")
 
-    # 🚀 Firebase App Distribution
-    # if firebase_app_id && File.exist?(aab_path)
-    #   begin
-    #     firebase_app_distribution(
-    #       app: firebase_app_id,
-    #       android_artifact_path: aab_path,
-    #       android_artifact_type: "AAB",
-    #       groups: "beta-testers",
-    #       release_notes: "Deploying #{env} build - #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
-    #     )
-    #     UI.success("✅ Uploaded to Firebase App Distribution successfully")
-    #   rescue => e
-    #     UI.error("❌ Failed to upload to Firebase: #{e.message}")
-    #   end
-    # else
-    #   UI.error("⚠️ Firebase App ID not set or AAB not found, skipping Firebase upload.")
-    # end
+    🚀 Firebase App Distribution
+    if firebase_app_id && File.exist?(aab_path)
+      begin
+        firebase_app_distribution(
+          app: firebase_app_id,
+          android_artifact_path: aab_path,
+          android_artifact_type: "AAB",
+          groups: "beta-testers",
+          release_notes: "Deploying #{env} build - #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
+        )
+        UI.success("✅ Uploaded to Firebase App Distribution successfully")
+      rescue => e
+        UI.error("❌ Failed to upload to Firebase: #{e.message}")
+      end
+    else
+      UI.error("⚠️ Firebase App ID not set or AAB not found, skipping Firebase upload.")
+    end
 
     # 📤 Google Play Upload
     json_key_file = File.expand_path("../../google-play-service-account.json", __dir__)
