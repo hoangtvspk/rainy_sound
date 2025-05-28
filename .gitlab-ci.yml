@@ -91,13 +91,6 @@ before_script:
   - *setup_google_play_service_account
   - flutter channel $FLUTTER_CHANNEL
   - flutter pub get
-  - |
-    if [ ! -d "android/vendor/bundle" ]; then
-      cd android
-      bundle install --path vendor/bundle
-      bundle exec fastlane install_plugins
-      cd ..
-    fi
 
 # ANALYZE và TEST chạy bình thường trên branch
 analyze:
