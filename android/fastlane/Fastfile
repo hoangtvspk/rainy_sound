@@ -56,8 +56,8 @@ platform :android do
     end
 
 
-    pathRelease = File.expand_path("../../build/app/outputs/bundle/devRelease", __dir__)
-    UI.message "📂 ../../build/app/outputs/bundle/devRelease: #{pathRelease}"
+    pathRelease = File.expand_path("../../build/app/outputs/bundle/#{env}Release", __dir__)
+    UI.message "📂 ../../build/app/outputs/bundle/#{env}Release: #{pathRelease}"
 
     if File.directory?(pathRelease)
       UI.message "📁 Contents of #{pathRelease}:"
@@ -68,15 +68,17 @@ platform :android do
 
     
 
-    aab_path = File.expand_path("../../build/app/outputs/bundle/devRelease/app-dev-release.aab", __dir__)
+    aab_path = File.expand_path("../../build/app/outputs/bundle/#{env}Release/app-#{env}-release.aab", __dir__)
+    apk_path = File.expand_path("../../build/app/outputs/apk/#{env}/release/app-#{env}-release.apk", __dir__)
     UI.message("📦 Using AAB path: #{aab_path}")
+    UI.message("📦 Using APK path: #{apk_path}")
 
-    if firebase_app_id && File.exist?(aab_path)
+    if firebase_app_id && File.exist?(apk_path)
       begin
         firebase_app_distribution(
           app: firebase_app_id,
-          android_artifact_path: aab_path,
-          android_artifact_type: "AAB",
+          android_artifact_path: apk_path,
+          android_artifact_type: "APK",
           groups: "beta-testers",
           release_notes: "Deploying #{env} build - #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
         )

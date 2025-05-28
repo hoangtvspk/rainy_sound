@@ -38,12 +38,14 @@ stages:
   - |
     if [[ "$CI_COMMIT_TAG" =~ "android" ]]; then
       make build-appbundle-${ENVIRONMENT}
+      make build-android-${ENVIRONMENT}
     fi
     if [[ "$CI_COMMIT_TAG" =~ "ios" ]]; then
       make build-ios-${ENVIRONMENT}
     fi
     if [[ "$CI_COMMIT_TAG" =~ "android-ios" ]]; then
       make build-appbundle-${ENVIRONMENT}
+      make build-android-${ENVIRONMENT}
       make build-ios-${ENVIRONMENT}
     fi
 
