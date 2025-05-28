@@ -126,6 +126,7 @@ build-dev:
   artifacts:
     paths:
       - build/app/outputs/bundle/devRelease/*.aab
+      - build/app/outputs/flutter-apk/*.apk
       - build/ios/ipa/*.ipa
 
 deploy-dev:
