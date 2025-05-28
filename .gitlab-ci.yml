@@ -52,18 +52,18 @@ stages:
   - |
     if [[ "$CI_COMMIT_TAG" =~ "android" ]]; then
       cd android
-      fastlane android deploy environment:${ENVIRONMENT} ${FIREBASE_APP_ID_PARAM}
+      fastlane android deploy environment:${ENVIRONMENT} firebase_app_id:${FIREBASE_ANDROID_APP_ID}
     fi
     if [[ "$CI_COMMIT_TAG" =~ "ios" ]]; then
       cd ios
-      fastlane ios deploy environment:${ENVIRONMENT} ${FIREBASE_APP_ID_PARAM}
+      fastlane ios deploy environment:${ENVIRONMENT} firebase_app_id:${FIREBASE_IOS_APP_ID}
     fi
     if [[ "$CI_COMMIT_TAG" =~ "android-ios" ]]; then
       cd android
-      fastlane android deploy environment:${ENVIRONMENT} ${FIREBASE_APP_ID_PARAM}
+      fastlane android deploy environment:${ENVIRONMENT} firebase_app_id:${FIREBASE_ANDROID_APP_ID}
       cd ..
       cd ios
-      fastlane ios deploy environment:${ENVIRONMENT} ${FIREBASE_APP_ID_PARAM}
+      fastlane ios deploy environment:${ENVIRONMENT} firebase_app_id:${FIREBASE_IOS_APP_ID}
     fi
 
 variables:
@@ -131,7 +131,7 @@ deploy-dev:
     - macos
   variables:
     ENVIRONMENT: "dev"
-    FIREBASE_APP_ID_PARAM: "firebase_app_id=$FIREBASE_ANDROID_APP_ID"
+    FIREBASE_APP_ID_PARAM: "$FIREBASE_ANDROID_APP_ID"
   needs:
     - build-dev
   <<: *retry_config
