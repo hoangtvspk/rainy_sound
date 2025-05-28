@@ -56,8 +56,8 @@ platform :android do
     end
 
 
-    pathRelease = File.expand_path("../../build/app/outputs/bundle/#{env}Release", __dir__)
-    UI.message "📂 ../../build/app/outputs/bundle/#{env}Release: #{pathRelease}"
+    pathRelease = File.expand_path("../../build/app/outputs/apk/#{env}/release", __dir__)
+    UI.message "📂 ../../build/app/outputs/apk/#{env}/release: #{pathRelease}"
 
     if File.directory?(pathRelease)
       UI.message "📁 Contents of #{pathRelease}:"
@@ -69,7 +69,7 @@ platform :android do
     
 
     aab_path = File.expand_path("../../build/app/outputs/bundle/#{env}Release/app-#{env}-release.aab", __dir__)
-    apk_path = File.expand_path("../../build/app/outputs/flutter-apk/app-#{env}-release.apk", __dir__)
+    apk_path = File.expand_path("../../build/app/outputs/apk/#{env}/release/app-#{env}-release.apk", __dir__)
     UI.message("📦 Using AAB path: #{aab_path}")
     UI.message("📦 Using APK path: #{apk_path}")
 
