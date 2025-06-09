@@ -33,7 +33,7 @@ platform :ios do
         )
     rescue => e
         UI.error("❌ Failed to build iOS app: #{e.message}")
-        return
+        next
     end
 
     ipa_path = "../build/ios/ipa/App_#{env}.ipa"
@@ -80,7 +80,7 @@ platform :ios do
     UI.message("[DEBUG] Info.plist exists? #{File.exist?(info_plist_path)} at #{info_plist_path}")
     unless File.exist?(info_plist_path)
       UI.error("❌ Info.plist not found at #{info_plist_path}. Please check your working directory and path.")
-      return nil
+      next nil
     end
 
     version = get_info_plist_value(
@@ -88,10 +88,10 @@ platform :ios do
       key: "CFBundleShortVersionString"
     )
     UI.message("📱 iOS Version from Info.plist: #{version}")
-    return version
+    next version
   rescue => e
     UI.error("❌ Failed to read version from Info.plist: #{e.message}")
-    return nil
+    next nil
   end
 
   private_lane :read_ios_build_number do
@@ -100,7 +100,7 @@ platform :ios do
     UI.message("[DEBUG] Info.plist exists? #{File.exist?(info_plist_path)} at #{info_plist_path}")
     unless File.exist?(info_plist_path)
       UI.error("❌ Info.plist not found at #{info_plist_path}. Please check your working directory and path.")
-      return 1
+      next 1
     end
 
     current_build = get_info_plist_value(
@@ -109,13 +109,13 @@ platform :ios do
     ).to_i
     new_build = current_build + 1
     UI.message("📱 iOS Build number: #{new_build}")
-    return new_build
+    next new_build
   rescue => e
     UI.error("❌ Failed to read build number from Info.plist: #{e.message}")
-    return 1
+    next 1
   end
 
   private_lane :get_scheme do |env|
-    return env == "prod" ? "AppProdScheme" : "AppDevScheme"
+    next env == "prod" ? "AppProdScheme" : "AppDevScheme"
   end
 end
