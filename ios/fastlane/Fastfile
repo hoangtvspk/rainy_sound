@@ -13,7 +13,7 @@ platform :ios do
 
     UI.message("Using version: #{version_number}, build: #{build_number}")
 
-    scheme = get_scheme(env)
+    scheme = get_scheme(env: env)
     UI.message("Using scheme: #{scheme}")
 
     # Build app
@@ -109,7 +109,8 @@ platform :ios do
     next 1
   end
 
-  private_lane :get_scheme do |env|
+  private_lane :get_scheme do |options|
+    env = options[:env]
     next env == "prod" ? "AppProdScheme" : "AppDevScheme"
   end
 end
