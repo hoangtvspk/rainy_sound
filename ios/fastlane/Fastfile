@@ -10,14 +10,8 @@ platform :ios do
 
     version_number = read_version_number
     build_number = read_ios_build_number
-    increment_version_number(
-      version_number: version_number,
-      xcodeproj: "../Runner.xcodeproj"
-    )
-    increment_build_number(
-      build_number: build_number,
-      xcodeproj: "../Runner.xcodeproj"
-    )
+
+    UI.message("Using version: #{version_number}, build: #{build_number}")
 
     scheme = get_scheme(env)
     UI.message("Using scheme: #{scheme}")
