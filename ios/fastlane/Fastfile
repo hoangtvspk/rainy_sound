@@ -8,6 +8,13 @@ platform :ios do
 
     UI.message("🚀 Deploying iOS app for environment: #{env}")
 
+    # Chạy pod install an toàn bằng Fastlane action
+    cocoapods(
+      clean: true,
+      install: true,
+      repo_update: false
+    )
+
     version_number = read_version_number
     build_number = read_ios_build_number
 
