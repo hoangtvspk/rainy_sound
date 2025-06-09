@@ -81,9 +81,11 @@ platform :ios do
       UI.error("❌ Info.plist not found")
       return nil
     end
-  
-    # Sử dụng PlistBuddy để đọc version
-    version = sh("defaults read #{info_plist_path} CFBundleShortVersionString").strip
+
+    version = get_info_plist_value(
+      path: info_plist_path,
+      key: "CFBundleShortVersionString"
+    )
     UI.message("📱 iOS Version from Info.plist: #{version}")
     return version
   rescue => e
@@ -98,9 +100,11 @@ platform :ios do
       UI.error("❌ Info.plist not found")
       return 1
     end
-  
-    # Sử dụng PlistBuddy để đọc build number
-    current_build = sh("defaults read #{info_plist_path} CFBundleVersion").strip.to_i
+
+    current_build = get_info_plist_value(
+      path: info_plist_path,
+      key: "CFBundleVersion"
+    ).to_i
     new_build = current_build + 1
     
     UI.message("📱 iOS Build number: #{new_build}")
