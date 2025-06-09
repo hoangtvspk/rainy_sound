@@ -8,8 +8,8 @@ platform :ios do
 
     UI.message("🚀 Deploying iOS app for environment: #{env}")
 
-    version_number = get_version_number
-    build_number = get_ios_build_number
+    version_number = read_version_number
+    build_number = read_ios_build_number
     increment_version_number(
       version_number: version_number,
       xcodeproj: "../Runner.xcodeproj"
@@ -74,11 +74,12 @@ platform :ios do
     
   end
 
-  private_lane :get_version_number do
-    # Đọc version từ Info.plist
+  private_lane :read_version_number do
     info_plist_path = "../Runner/Info.plist"
+    UI.message("[DEBUG] Current Dir: #{Dir.pwd}")
+    UI.message("[DEBUG] Info.plist exists? #{File.exist?(info_plist_path)} at #{info_plist_path}")
     unless File.exist?(info_plist_path)
-      UI.error("❌ Info.plist not found")
+      UI.error("❌ Info.plist not found at #{info_plist_path}. Please check your working directory and path.")
       return nil
     end
 
@@ -93,11 +94,12 @@ platform :ios do
     return nil
   end
 
-  private_lane :get_ios_build_number do
-    # Đọc build number từ Info.plist
+  private_lane :read_ios_build_number do
     info_plist_path = "../Runner/Info.plist"
+    UI.message("[DEBUG] Current Dir: #{Dir.pwd}")
+    UI.message("[DEBUG] Info.plist exists? #{File.exist?(info_plist_path)} at #{info_plist_path}")
     unless File.exist?(info_plist_path)
-      UI.error("❌ Info.plist not found")
+      UI.error("❌ Info.plist not found at #{info_plist_path}. Please check your working directory and path.")
       return 1
     end
 
@@ -106,7 +108,6 @@ platform :ios do
       key: "CFBundleVersion"
     ).to_i
     new_build = current_build + 1
-    
     UI.message("📱 iOS Build number: #{new_build}")
     return new_build
   rescue => e
