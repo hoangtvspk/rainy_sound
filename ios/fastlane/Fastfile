@@ -75,7 +75,7 @@ platform :ios do
   end
 
   private_lane :read_version_number do
-    info_plist_path = "../Runner/Info.plist"
+    info_plist_path = File.expand_path("../Runner/Info.plist", __dir__)
     UI.message("[DEBUG] Current Dir: #{Dir.pwd}")
     UI.message("[DEBUG] Info.plist exists? #{File.exist?(info_plist_path)} at #{info_plist_path}")
     unless File.exist?(info_plist_path)
@@ -95,7 +95,7 @@ platform :ios do
   end
 
   private_lane :read_ios_build_number do
-    info_plist_path = "../Runner/Info.plist"
+    info_plist_path = File.expand_path("../Runner/Info.plist", __dir__)
     UI.message("[DEBUG] Current Dir: #{Dir.pwd}")
     UI.message("[DEBUG] Info.plist exists? #{File.exist?(info_plist_path)} at #{info_plist_path}")
     unless File.exist?(info_plist_path)
