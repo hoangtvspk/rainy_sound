@@ -9,9 +9,8 @@ platform :ios do
     UI.message("🚀 Deploying iOS app for environment: #{env}")
 
     # Chạy pod install an toàn bằng Fastlane action
-    cocoapods(
-      clean: true,
-      install: true,
+   cocoapods(
+      clean_install: true,
       repo_update: false
     )
 
