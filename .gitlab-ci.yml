@@ -89,6 +89,8 @@ cache:
 before_script:
   - *setup_environment
   - *setup_google_play_service_account
+  - export LANG=en_US.UTF-8
+  - export LC_ALL=en_US.UTF-8
   - flutter channel $FLUTTER_CHANNEL
   - flutter pub get
 
