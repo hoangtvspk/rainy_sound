@@ -4,7 +4,7 @@ platform :ios do
   desc "Build and deploy iOS app to Firebase App Distribution and TestFlight/App Store"
   lane :deploy do |options|
     env = options[:environment] || "dev" # environment default dev
-    firebase_app_id = options[:firebase_app_id] 
+    firebase_app_id = options[:firebase_app_id] || ENV["FIREBASE_APP_ID"] 
 
     UI.message("🚀 Deploying iOS app for environment: #{env}")
 
@@ -64,7 +64,15 @@ platform :ios do
         end
     else
         begin
-            pilot(skip_submission: true, ipa: ipa_path)
+            pilot(
+              api_key: app_store_connect_api_key(
+                key_id: ENV["APP_STORE_CONNECT_KEY_ID"],
+                issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
+                key_content: ENV["APP_STORE_CONNECT_API_KEY"]
+              ),
+              skip_submission: true, 
+              ipa: ipa_path
+            )
         rescue => e
             UI.error("❌ Failed to upload to TestFlight: #{e.message}")
         end
