@@ -27,7 +27,7 @@ platform :ios do
         gym(
             scheme: scheme,
             clean: true,
-            export_method: env == "app-store",
+            export_method: "app-store",
             output_directory: "../build/ios/ipa",
             output_name: "App_#{env}.ipa"
         )
