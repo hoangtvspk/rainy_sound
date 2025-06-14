@@ -52,6 +52,8 @@ platform :ios do
             UI.error("❌ Failed to upload to Firebase: #{e.message}")
         end
     else
+        UI.message("Firebase App ID: #{firebase_app_id}")
+        UI.message("IPA path: #{ipa_path}")
         UI.error("Firebase App ID not set or IPA not found, skipping Firebase upload.")
     end
 
