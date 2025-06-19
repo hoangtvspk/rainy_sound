@@ -122,7 +122,7 @@ build-dev:
     ENVIRONMENT: "dev"
   <<: *retry_config
   rules:
-    - if: '$CI_COMMIT_BRANCH == "dev" && $CI_COMMIT_MESSAGE =~ "deploy"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
   script:
     - *check_platform_to_build
 
